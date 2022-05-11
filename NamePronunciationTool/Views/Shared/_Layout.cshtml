@@ -2,32 +2,82 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - NamePronunciationTool</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>@ViewData["Title"] - Pronunce_User_Interface</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Material Design for Bootstrap</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+
+    <script type="text/javascript"></script>
+
+    <link rel="stylesheet" href="~/css/styles.css">
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    -->
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-danger border-bottom box-shadow mb-3" style="border-color: yellow; border-bottom-width:thick;">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">NamePronunciationTool</a>
+                <a class="navbar-brand font-bold text-white" asp-area="" asp-controller="Home" asp-action="Index">Pronunce_User_Interface</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="navbar-nav  mr-auto">
+
+                        
+                            <li class="nav-item">
+                            <a class="nav-link font-bold text-white" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
+                        </li>
+                        
+                        <li class="nav-item dropdown">
+                            <a class="nav-link font-bold text-white dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fa fa-user"></i> Profile </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-cyan" aria-labelledby="navbarDropdownMenuLink-4">
+                                <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="User_Profile">My account</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Index">Log out</a>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search by ID" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                            <a class="nav-link text-dark bg-light" asp-area="" asp-controller="Home" asp-action="Employee_Profile">Search</a>
+
+                        </button>
+                    </form>
+
+                    <ul class="navbar-nav flex-grow-1 ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link font-bold text-white" asp-area="" asp-controller="Home" asp-action="Index">Team Update</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link font-bold text-white" asp-area="" asp-controller="Home" asp-action="Index">Benifit Details</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link font-bold text-white" asp-area="" asp-controller="Home" asp-action="Profile">Help</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
+
+        
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -37,12 +87,14 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - NamePronunciationTool - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2022 - Pronunce_User_Interface - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>

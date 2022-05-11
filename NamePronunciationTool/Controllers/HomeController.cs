@@ -27,6 +27,25 @@ namespace NamePronunciationTool.Controllers
         {
             return View();
         }
+        public IActionResult Employee_Profile()
+        {
+            return View();
+        }
+
+        public IActionResult User_Profile()
+        {
+            return View();
+        }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        public IActionResult Profile()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

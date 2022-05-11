@@ -2,7 +2,289 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Material Design for Bootstrap</title>
+    <!-- MDB icon -->
+    <link rel="icon" href="~/img/mdb-favicon.ico" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+    <!-- MDB -->
+    <link rel="stylesheet" href="~/css/bootstrap-profiles.min.css" />
+    <link rel="stylesheet" href="~/css/styles.css">
+    <link rel="stylesheet" href="~/css/indexCSS.css">
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+</head>
+
+<body>
+    <!-- Start your project here-->
+    <section style="background-color: #eee;">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col">
+                    <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="card mb-4">
+                        <div class="card-body text-center">
+                            <h1 style="color:red;">Good Morning, Mike!</h1>
+
+                            <div class="news-holder cf">
+
+                                <ul class="news-headlines">
+                                    <li class="selected">Learn Information and cyber security</li>
+                                    <li>Webinars: Learne to project management</li>
+                                    <li>Learn Financial Instruments</li>
+                                    <li>Learn Machine Learning</li>
+                                    <li>Learn Azure Fundamentals</li>
+                                    <li>Have you attended Team Meet?</li>
+                                    <!-- li.hhlight gets inserted here -->
+                                </ul>
+
+                                <div class="news-preview">
+
+                                    <div class="news-content top-content">
+                                        <img src="~/img/info.jpeg">
+                                        <p><a href="#">Learn Information and cyber security</a></p>
+
+                                        <p>Advanced Threat Intelligence to Help You Manage Risk and Protect Against Cyberattacks.</p>
+                                    </div>
+                                    <!-- .news-content -->
+
+                                    <div class="news-content">
+                                        <img src="~/img/proj.jpeg">
+                                        <p><a href="#">Webinars: Learne to project management</a></p>
+
+                                        <p>Project management is the process of leading the work of a team to achieve all project goals within the given constraints.</p>
+                                    </div>
+                                    <!-- .news-content -->
+
+                                    <div class="news-content">
+                                        <img src="~/img/fin.png">
+                                        <p><a href="#">Learn Financial Instruments</a></p>
+
+                                        <p>A financial instrument is defined as a contract between individuals/parties that holds a monetary value.</p>
+                                    </div>
+                                    <!-- .news-content -->
+
+                                    <div class="news-content">
+                                        <img src="~/img/mach.png">
+                                        <p><a href="#">Learn Machine Learning</a></p>
+
+                                        <p>Machine learning (ML) is a type of artificial intelligence (AI) that allows software applications to become more accurate at predicting outcomes without being explicitly programmed to do so.</p>
+                                    </div>
+                                    <!-- .news-content -->
+
+                                    <div class="news-content">
+                                        <img src="~/img/azure.png">
+                                        <p><a href="#">Learn Azure Fundamentals</a></p>
+
+                                        <p>Azure Fundamentals validates foundational knowledge of cloud services and how those services are provided with Microsoft Azure.</p>
+                                    </div>
+                                    <!-- .news-content -->
+
+                                    <div class="news-content">
+                                        <img src="~/img/team.png">
+                                        <p><a href="#">Have you attended Team Meet?</a></p>
+
+                                        <p>Chat, call, and share video simply from one place that helps you stay close to all the people in your life.</p>
+                                    </div>
+                                    <!-- .news-content -->
+
+                                </div>
+                                <!-- .news-preview -->
+
+                            </div>
+                            <!-- .news-holder -->
+
+                            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+                            <script>window.jQuery || document.write('<script src="js/jquery-1.8.1.min.js"><\/script>')</script>
+
+                            <script>var _gaq = _gaq || [];
+                                _gaq.push(['_setAccount', 'UA-1965499-1']);
+                                _gaq.push(['_trackPageview']);
+
+                                (function () {
+                                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                                })();</script>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="card mb-4">
+                        <h1 style="color:red;">Technology Stories</h1>
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img class="d-block w-100" src="~/img/magz1.jpeg" alt="First slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="~/img/magz2.jpeg" alt="Second slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="~/img/magz3.jpeg" alt="Third slide">
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End your project here-->
+    <!-- MDB -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript"></script>
+    <script>$(function () {
+            "use strict";
+
+            var hl,
+                newsList = $('.news-headlines'),
+                newsListItems = $('.news-headlines li'),
+                firstNewsItem = $('.news-headlines li:nth-child(1)'),
+                newsPreview = $('.news-preview'),
+                elCount = $('.news-headlines').children(':not(.highlight)').index(),
+                vPadding = (parseInt(firstNewsItem.css('padding-top').replace('px', ''), 10)) +
+                    (parseInt(firstNewsItem.css('padding-bottom').replace('px', ''), 10)),
+                vMargin = (parseInt(firstNewsItem.css('margin-top').replace('px', ''), 10)) +
+                    (parseInt(firstNewsItem.css('margin-bottom').replace('px', ''), 10)),
+                cPadding = (parseInt($('.news-content').css('padding-top').replace('px', ''), 10)) +
+                    (parseInt($('.news-content').css('padding-bottom').replace('px', ''), 10)),
+                speed = 5000, // this is the speed of the switch
+                myTimer = null,
+                siblings = null,
+                totalHeight = null,
+                indexEl = 1,
+                i = null;
+
+            // the css animation gets added dynamicallly so
+            // that the news item sizes are measured correctly
+            // (i.e. not in mid-animation)
+            // Also, appending the highlight item to keep HTML clean
+            newsList.append('<li class="highlight nh-anim"></li>');
+            hl = $('.highlight');
+            newsListItems.addClass('nh-anim');
+
+            function doEqualHeight(c) {
+
+                if (newsPreview.height() < newsList.height()) {
+                    newsPreview.height(newsList.height());
+                } else if ((newsList.height() < newsPreview.height()) && (newsList.height() > parseInt(newsPreview.css('min-height').replace('px', ''), 10))) {
+                    newsPreview.height(newsList.height());
+                }
+
+                if ($('.news-content:nth-child(' + c + ')').height() > newsPreview.height()) {
+                    newsPreview.height($('.news-content:nth-child(' + c + ')').height() + cPadding);
+                }
+            }
+
+            function doTimedSwitch() {
+
+                myTimer = setInterval(function () {
+                    if (($('.selected').prev().index() + 1) === elCount) {
+                        firstNewsItem.trigger('click');
+                    } else {
+                        $('.selected').next(':not(.highlight)').trigger('click');
+                    }
+                }, speed);
+
+            }
+
+            $('.news-content').on('mouseover', function () {
+                clearInterval(myTimer);
+            });
+
+            $('.news-content').on('mouseout', function () {
+                doTimedSwitch();
+            });
+
+            function doClickItem() {
+
+                newsListItems.on('click', function () {
+
+                    newsListItems.removeClass('selected');
+                    $(this).addClass('selected');
+
+                    siblings = $(this).prevAll();
+                    totalHeight = 0;
+
+                    // this loop calculates the height of individual elements, including margins/padding
+                    for (i = 0; i < siblings.length; i += 1) {
+                        totalHeight += $(siblings[i]).height();
+                        totalHeight += vPadding;
+                        totalHeight += vMargin;
+                    }
+
+                    // this moves the highlight vertically the distance calculated in the previous loop
+                    // and also corrects the height of the highlight to match the current selection
+                    hl.css({
+                        top: totalHeight,
+                        height: $(this).height() + vPadding
+                    });
+
+                    indexEl = $(this).index() + 1;
+
+                    $('.news-content:nth-child(' + indexEl + ')').siblings().removeClass('top-content');
+                    $('.news-content:nth-child(' + indexEl + ')').addClass('top-content');
+
+                    clearInterval(myTimer);
+                    // comment out the line below if you don't
+                    // want it to rotate automatically
+                    doTimedSwitch();
+                    doEqualHeight(indexEl);
+                });
+
+            }
+
+            function doWindowResize() {
+
+                $(window).resize(function () {
+
+                    clearInterval(myTimer);
+                    // click is triggered to recalculate and fix the highlight position
+                    $('.selected').trigger('click');
+
+                });
+
+            }
+
+            // this is the poor man's 'init' section
+            doClickItem();
+            doWindowResize();
+            $('.selected').trigger('click');
+
+        });</script>
+
+</body>
+</html>
