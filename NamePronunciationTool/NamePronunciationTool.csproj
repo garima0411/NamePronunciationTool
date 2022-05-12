@@ -4,4 +4,16 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="System.Data.SqlClient" />
+    <None Remove="Dapper" />
+    <None Remove="Microsoft.Data.SqlClient" />
+    <None Remove="Dapper.ParameterExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="4.1.0" />
+    <PackageReference Include="Dapper.ParameterExtensions" Version="2018.12.7.1" />
+  </ItemGroup>
 </Project>

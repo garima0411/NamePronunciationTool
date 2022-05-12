@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@using Microsoft.AspNetCore.Http;
 
 <html>
 <head>
@@ -39,7 +40,23 @@
                 <div class="col-lg-5">
                     <div class="card mb-4">
                         <div class="card-body text-center">
-                            <h1 style="color:red;">Good Morning, Mike!</h1>
+
+                            @if(@Context.Session.GetString("username") != null)
+                            {
+                            <h1 style="color:red;">
+                                Good Morning, @Context.Session.GetString("prfname")!
+                            </h1>
+
+                            }
+                            else
+                            {
+                            <h1 style="color:red;">
+                                Welcome to TeamWorks !!
+                            </h1>
+
+
+                            }
+
 
                             <div class="news-holder cf">
 

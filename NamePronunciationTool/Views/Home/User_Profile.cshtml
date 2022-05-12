@@ -2,7 +2,7 @@
     ViewData["Title"] = "User Profile page";
 
 }
-
+@using Microsoft.AspNetCore.Http;
 
 <html>
 <head>
@@ -45,9 +45,9 @@
                         <div class="card-body text-center">
                             <img src="~/img/alex_male.png" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
                             <h5 class="my-3">
-                                <span id="idName">Michaels Dawn Thomas</span>
+                                <span id="idName"> @Context.Session.GetString("username")</span>
                                 <span> - </span>
-                                <span id="employeeId">U12345</span>
+                                <span id="employeeId">@Context.Session.GetString("userID")</span>
                             </h5>
                             <p class="text-muted mb-1">Full Stack Developer</p>
 
@@ -56,57 +56,52 @@
                     </div>
                     <div class="card mb-4">
                         <div class="card-body">
+                            <p class="mb-4"><span class="text-primary font-italic me-1">Personal Details</span> <a href="#">Edit</a></p>
                             <div class="row">
-                                <div class="col-sm-3">
+
+                                <div class="col-sm-5">
                                     <p class="mb-0">Full Name</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">Michaels Thomas</p>
+                                    <p class="text-muted mb-0">@Context.Session.GetString("fullname")</p>
+
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
-                                <div class="col-sm-3">
+                                <div class="col-sm-5">
                                     <p class="mb-0">Legal Name</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">Michaels Dawn Thomas</p>
+                                    <p class="text-muted mb-0">@Context.Session.GetString("legalname")</p>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
-                                <div class="col-sm-3">
+                                <div class="col-sm-5">
                                     <p class="mb-0">Email</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">April.Thomas@example.com</p>
+                                    <p class="text-muted mb-0">@Context.Session.GetString("email")</p>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
-                                <div class="col-sm-3">
+                                <div class="col-sm-5">
                                     <p class="mb-0">Phone</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">(097) 000-5678</p>
+                                    <p class="text-muted mb-0">(097) @Context.Session.GetString("mobile")</p>
                                 </div>
                             </div>
                             <hr>
+
                             <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Mobile</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">(098) 000-4321</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
+                                <div class="col-sm-5">
                                     <p class="mb-0">Address</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">Wells Fargo, Bangalore</p>
+                                    <p class="text-muted mb-0">@Context.Session.GetString("address")</p>
                                 </div>
                             </div>
                         </div>

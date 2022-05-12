@@ -14,18 +14,19 @@
         <div class="row">
             <div style="width: 40%; margin: 25px auto;">
                 <h3 style="text-align: center;">Login Page</h3>
-                <form method="POST" action="">
+                <form method="POST" asp-controller="Home" asp-action="UserLogin">
                     <div class="form-group">
-                        <label>UserName:</label><input type="text" name="UserName" class="form-control" autofocus placeholder="username">
+                        @ViewBag.error
+                        <label>UserName:</label><input type="text" name="UserName" class="form-control" autofocus placeholder="Enter your AD/ENT UserID">
                     </div>
                     <div class="form-group">
                         <label>Password:</label><input type="Password" name="Password" class="form-control" autofocus placeholder="Password">
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-ln btn-success btn-block">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="User_Profile">Submit</a>
+                        
+                            <input type="submit" value="LOGIN" />
 
-                        </button>
+                       
                     </div>
                 </form>
                 <p>New Here?<a href="">Sign Up</a> </p>

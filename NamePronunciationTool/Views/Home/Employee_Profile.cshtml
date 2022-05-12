@@ -1,6 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Employee Profile";
 }
+@using Microsoft.AspNetCore.Http;
+
 
 <html>
 <head>
@@ -43,9 +45,9 @@
                         <div class="card-body text-center">
                             <img src="~/img/alex_male.png" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
                             <h5 class="my-3">
-                                <span id="idName">Michaels Dawn Thomas</span>
+                                <span id="idName">@Context.Session.GetString("Employeeusername")</span>
                                 <span> - </span>
-                                <span id="employeeId">U12345</span>
+                                <span id="employeeId">@Context.Session.GetString("EmployeeuserID")</span>
                             </h5>
                             <p class="text-muted mb-1">Full Stack Developer</p>
 
@@ -61,7 +63,7 @@
                                     <p class="mb-0">Full Name</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">Michaels Thomas</p>
+                                    <p class="text-muted mb-0">@Context.Session.GetString("empfullname")</p>
 
                                 </div>
                             </div>
@@ -71,7 +73,7 @@
                                     <p class="mb-0">Legal Name</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">Michaels Dawn Thomas</p>
+                                    <p class="text-muted mb-0">@Context.Session.GetString("emplegalname")</p>
                                 </div>
                             </div>
                             <hr>
@@ -80,7 +82,7 @@
                                     <p class="mb-0">Email</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">April.Thomas@example.com</p>
+                                    <p class="text-muted mb-0">@Context.Session.GetString("empemail")</p>
                                 </div>
                             </div>
                             <hr>
@@ -89,25 +91,17 @@
                                     <p class="mb-0">Phone</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">(097) 000-5678</p>
+                                    <p class="text-muted mb-0">(097) @Context.Session.GetString("empmobile")</p>
                                 </div>
                             </div>
                             <hr>
-                            <div class="row">
-                                <div class="col-sm-5">
-                                    <p class="mb-0">Mobile</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">(098) 000-4321</p>
-                                </div>
-                            </div>
-                            <hr>
+                            
                             <div class="row">
                                 <div class="col-sm-5">
                                     <p class="mb-0">Address</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">Wells Fargo, Bangalore</p>
+                                    <p class="text-muted mb-0">@Context.Session.GetString("empaddress")</p>
                                 </div>
                             </div>
                         </div>
@@ -408,8 +402,8 @@
 
 
     <script>/*$(function () {
-            $("#practice").addClass("progress-bar-purple");
-        });*/
+                    $("#practice").addClass("progress-bar-purple");
+                });*/
         async function getPracticePronouciation() {
 
 
