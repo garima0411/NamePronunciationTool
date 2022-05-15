@@ -8,6 +8,10 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using Microsoft.IdentityModel.Tokens;
 
 namespace NamePronunciationTool
 {
@@ -23,6 +27,33 @@ namespace NamePronunciationTool
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
+            })
+          .AddCookie()
+          .AddOpenIdConnect(options =>
+          {
+              options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+              options.Authority = Configuration["Okta:Domain"] + "/oauth2/default";
+              options.RequireHttpsMetadata = true;
+              options.ClientId = Configuration["Okta:ClientId"];
+              options.ClientSecret = Configuration["Okta:ClientSecret"];
+              options.ResponseType = OpenIdConnectResponseType.Code;
+              options.GetClaimsFromUserInfoEndpoint = true;
+              options.Scope.Add("openid");
+              options.Scope.Add("profile");
+              options.SaveTokens = true;
+              options.TokenValidationParameters = new TokenValidationParameters
+              {
+                  NameClaimType = "name",
+                  RoleClaimType = "groups",
+                  ValidateIssuer = true
+              };
+          });
+
+            services.AddAuthorization();
             services.AddMvc();
             services.AddSession();
             services.AddControllersWithViews();
@@ -46,6 +77,7 @@ namespace NamePronunciationTool
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

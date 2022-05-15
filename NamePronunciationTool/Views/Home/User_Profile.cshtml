@@ -118,7 +118,7 @@
                                         <div class="col-sm-11">
                                             <div class="pad size r newfontstyle h4 text-dark">
                                                 Enter Your Preferred Name    <hr>
-                                                <form class="form-inline my-2 my-lg-0" method="POST" asp-controller="Home" asp-action="SavePreferredName">
+                                                <form class="form-inline my-2 my-lg-0" method="GET" asp-controller="Home" asp-action="SaveUserPreferredName">
 
                                                     <input class="form-control mr-sm-2 required" name="prfName" type="search" placeholder="Enter here.." aria-label="Search">
                                                     <label for="select">
@@ -164,11 +164,14 @@
                                     <div class="row p-3">
                                         <div class="col-sm-6">
                                             <div class="pad r newfontstyle h4 text-dark">
-                                                Record Your Name      <hr>
+                                               Voice Record Your Name      <hr>
                                                 <div class="h6" id="divrec" style="text-align:left;">
                                                     <label>Click the button to start recording...</label>
-                                                    <button class="nwbttn" onclick="recordNamePronouciation()">
+                                                    <button class="nwbttn" id="btnRecNM" onclick="location.href='@Url.Action("RecordYourName", "Home")'">
                                                         <img src="/img/record.png" alt="user" width="110" height="80">
+                                                    </button>
+                                                    <button class="curve-grad py-3" id="btnDelte" onclick="location.href='/Home/DeleteRecordedYourName'" style="margin-left:65px;">
+                                                        Delete Recording
                                                     </button>
                                                     <div class="boxContainer" id="idwaverec" style="display:none;">
                                                         <div class="box box1"></div>
@@ -185,7 +188,7 @@
                                             <div class="pad r newfontstyle h4 text-dark">
                                                 Play Back Recording  <hr>
                                                 <div class="h6" id="divplayback" style="text-align:left;">
-                                                    <label>Click the button to play recording...</label>
+                                                    <label>Click the button to play recording...</label> 
                                                     <button class="nwbttn" onclick="getNamePronouciation()">
                                                         <img src="~/img/play.png"
                                                              alt="user" width="80" height="70">
@@ -444,7 +447,8 @@
             const employeeId = document.getElementById("employeeId").textContent;
 
 
-            const endpoint = new URL("http://127.0.0.1:5000/recording?employeeId=" + employeeId);
+           const endpoint = new URL("http://127.0.0.1:5000/recording?employeeId=" + employeeId);
+          //const endpoint = new URL("http://127.0.0.1:5001/Record/Index");
             var headers = {};
             const response = await fetch(endpoint,
                 {
@@ -476,6 +480,9 @@
 
 
         }
+        $("btnRecNM").click(function () {
+            document.getElementById("idwaverec").style.display = "flex";
+        });
         document.getElementById("idTrendspan").innerHTML = document.getElementById("idName").innerHTML;
         document.getElementById("idA").addEventListener("click", writeNameIntoTex.bind(event, "A"), false);
         document.getElementById("idB").addEventListener("click", writeNameIntoTex.bind(event, "B"), false);

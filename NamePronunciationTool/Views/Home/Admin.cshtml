@@ -1,0 +1,45 @@
+﻿
+@{
+
+    ViewData["Title"] = "Admin page";
+
+}
+@using Microsoft.AspNetCore.Http;
+
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Material Design for Bootstrap</title>
+    <!-- MDB icon -->
+    <link rel="icon" href="~/img/mdb-favicon.ico" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+    <!-- MDB -->
+    <link rel="stylesheet" href="~/css/bootstrap-profiles.min.css" />
+    <link rel="stylesheet" href="~/js/userprofile.js" />
+    <link rel="stylesheet" href="~/css/styles.css">
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <script type="text/javascript" src="js/site.js"></script>
+</head>
+
+<body>
+    <!-- Start your project here-->
+    <section style="background-color: #eee;">
+        <div class="container-fluid p-2">
+            <div class="text-center">
+                <h1 class="display-4">Welcome Admin Page! @User.Identity.Name </h1>
+                <p class="h5">Manage Users Here</p>
+
+            </div>
+        </div>
+    </section>
+   
+
+</body>
+</html>
+
+

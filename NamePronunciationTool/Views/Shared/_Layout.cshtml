@@ -57,10 +57,29 @@
 
                         else
                         {
-                            <li class="nav-item">
-                                <a class="nav-link font-bold text-white" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
-                            </li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                
+                                <li class="nav-item">
+                                    <a class="nav-link font-bold text-white" asp-area="" asp-controller="Account" asp-action="logout">Log out</a>
+                                </li>
+
+
+                            }
+                            else
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link font-bold text-white dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fa fa-user"></i> Login </a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-cyan" aria-labelledby="navbarDropdownMenuLink-4">
+                                        <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Login">Admin Login</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Login">User Login</a>
+                                    </div>
+                                </li>
+                            }
+
+
                         }
+
                     </ul>
 
                     <form class="form-inline my-2 my-lg-0" method="POST" asp-controller="Home" asp-action="SearchByUid">
@@ -90,7 +109,7 @@
     </header>
     <div class="container-fluid p-2">
 
-        @if (@Context.Session.GetString("username") != null && (@ViewBag.isEmployeeprofile != null || ViewBag.isUserprofile != null))
+        @if ( @Context.Session.GetString("username") != null && (@ViewBag.isEmployeeprofile != null || ViewBag.isUserprofile != null))
         {
             <div class="row parallax-container">
 
@@ -154,7 +173,7 @@
 
                                     </tr>
                                 </tbody>
-                                <tbody>
+                                <tbody class="p-3">
 
                                     <tr>
                                         <td>
@@ -227,7 +246,11 @@
         <footer class="border-top footerStylenew text-muted">
             <div class="container" style="color:black;">
                 &copy; 2022 - Pronunce_User_Interface - <a asp-area="" asp-page="/Privacy">Privacy</a>
-            </div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a asp-area="" asp-controller="Account" asp-action="logout">Log out</a>
+                }
+                </div>
         </footer>
 
     }

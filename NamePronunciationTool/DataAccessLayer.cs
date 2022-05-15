@@ -34,8 +34,9 @@ namespace NamePronunciationTool
         {
             EmployeeName result = new EmployeeName();
             var parameters = new DynamicParameters();
+            var encryptedPwsd = EncryptPassword.Encrypt(pwd.Trim());
             parameters.Add("@userid", ueserID, DbType.String, ParameterDirection.Input);
-            parameters.Add("@pwd", pwd, DbType.String, ParameterDirection.Input);
+            parameters.Add("@pwd", encryptedPwsd, DbType.String, ParameterDirection.Input);
 
             using (var connection = new SqlConnection(_connStr))
             {
@@ -75,6 +76,13 @@ namespace NamePronunciationTool
 
             return result;
         }
+        /// <summary>
+        /// Update Employee Details
+        /// </summary>
+        /// <param name="ueserID"></param>
+        /// <param name="userPrfName"></param>
+        /// <param name="countryCode"></param>
+        /// <returns></returns>
 
         public EmployeeDetails UpdateandGetEmployeeNameDtks(string ueserID,  string userPrfName, string countryCode)
         {
@@ -97,6 +105,32 @@ namespace NamePronunciationTool
 
             return result;
         }
+        /// <summary>
+        /// Add recording path
+        /// </summary>
+        /// <param name="ueserID"></param>
+        /// <returns></returns>
+        public EmployeeDetails AddRecordingPath(string ueserID,string recPath = "")
+        {
+            EmployeeDetails result = new EmployeeDetails();
+            var parameters = new DynamicParameters();
+            parameters.Add("@userid", ueserID, DbType.String, ParameterDirection.Input);
+            parameters.Add("@path", recPath, DbType.String, ParameterDirection.Input);
+
+            using (var connection = new SqlConnection(_connStr))
+            {
+
+                connection.Open();
+                result = connection.QueryFirstOrDefault<EmployeeDetails>(QueryHelper.RecordPath, parameters, commandType: CommandType.Text, commandTimeout: 120);
+
+                connection.Close();
+
+
+            }
+
+            return result;
+        }
+
 
 
 
@@ -139,6 +173,25 @@ namespace NamePronunciationTool
     {
         public const string connectionString = "ConnectionStrings";
         public const string DBConnctnName = "DBConnectionString";
+        public const string apiConfig = "NamePronouceService";
+        public const string apiUrl = "APIUrl";
+        public const string RecordPath = @" BEGIN
+update Employee_Name_Pronounce_HLP set Emp_usr_nm_rec_path= @path where Employee_uid =@userid
+
+select distinct 
+EmployeeName ,
+Email ,
+EmpAddress ,
+EmpCity,
+Mobile,
+Employee_legal_Nm,
+Emp_usr_prf_Nm,
+Emp_usr_nm_country,
+Emp_usr_nm_rec_path from Employee emp inner join
+Employee_Name_Pronounce_HLP Hlpname on emp.EmployeeUID = Hlpname.Employee_uid where emp.EmployeeUID= @userid;
+
+END
+";
         public const string getLoginSuccess = @"select distinct Employee_legal_Nm,Emp_usr_prf_Nm,Emp_usr_nm_rec_path from Employee_Login_Dtls ln inner join
 Employee_Name_Pronounce_HLP em on em.Employee_uid = ln.EMPLOYEE_ID where ln.EMPLOYEE_ID= @userid and ln.pwd = @pwd";
         public const string getsearchedEmployee = @"select distinct 
