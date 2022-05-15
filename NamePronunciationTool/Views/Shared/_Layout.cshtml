@@ -10,6 +10,7 @@
     <title>@ViewData["Title"] - Pronunce_User_Interface</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/newStyles.css" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
@@ -32,8 +33,8 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-danger border-bottom box-shadow mb-3" style="border-color: yellow; border-bottom-width:thick;">
-            <div class="container">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-danger border-bottom box-shadow mb-2">
+            <div class="container-fluid p-2">
                 <a class="navbar-brand font-bold text-white" asp-area="" asp-controller="Home" asp-action="Index">Pronunce_User_Interface</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -87,17 +88,149 @@
 
 
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <div class="container-fluid p-2">
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - Pronunce_User_Interface - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
+        @if (@Context.Session.GetString("username") != null && (@ViewBag.isEmployeeprofile != null || ViewBag.isUserprofile != null))
+        {
+            <div class="row parallax-container">
+
+                <div class="col-xs-12 col-sm-9">
+                    <main role="main" class="pb-3">
+                        @RenderBody()
+                    </main>
+                </div>
+                <div class="col-xs-12 col-sm-3">
+                    <div class="card mb-4 mb-md-0">
+                        <div class="card-body">
+                            <p class="mb-4"><span class="text-primary font-italic me-1">Technicsl SKills</span></p>
+                            <p class="mb-1" style="font-size: .77rem;">Web Design</p>
+                            <div class="progress rounded" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
+                            <div class="progress rounded" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
+                            <div class="progress rounded" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
+                            <div class="progress rounded" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
+                            <div class="progress rounded mb-2" style="height: 5px;">
+                                <div class="progress-bar-striped" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-4 mb-md-0">
+                        <div class="card-body">
+                            <p class="mb-4"><span class="text-primary font-italic me-1">Organizational Outline</span></p>
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <h5 style="color:red">Reporting Manager</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="user-info">
+                                                <div class="user-info__img">
+                                                    <img src="~/img/alex.png"
+                                                         alt="user" width="70" height="40">
+                                                </div>
+                                                <div class="user-info__basic">
+                                                    <h5 class="mb-0">Suresh</h5>
+                                                    <p class="text-muted mb-0">U55679</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="active-circle bg-success"></span> Active
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                                <tbody>
+
+                                    <tr>
+                                        <td>
+                                            <h5 style="color:red">Team Outlines</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="user-info">
+                                                <div class="user-info__img">
+                                                    <img src="~/img/alex.png"
+                                                         alt="user" width="70" height="40">
+                                                </div>
+                                                <div class="user-info__basic">
+                                                    <h5 class="mb-0">Ranjana</h5>
+                                                    <p class="text-muted mb-0">U55679</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="active-circle bg-success"></span> Active
+                                        </td>
+
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <div class="user-info">
+                                                <div class="user-info__img">
+                                                    <img src="~/img/alex_male.png"
+                                                         alt="user" width="70" height="40">
+                                                </div>
+                                                <div class="user-info__basic">
+                                                    <h5 class="mb-0">Edwin</h5>
+                                                    <p class="text-muted mb-0">U45675</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="active-circle bg-danger"></span>Inactive
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        }
+
+    </div>
+    @if (@Context.Session.GetString("username") != null && (@ViewBag.isEmployeeprofile != null || ViewBag.isUserprofile != null))
+    {
+        <footer class="border-top footerStyle text-muted">
+            <div class="container" style="color:black;">
+                &copy; 2022 - Pronunce_User_Interface - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            </div>
+        </footer>
+    }
+    else
+    {
+        <footer class="border-top footerStylenew text-muted">
+            <div class="container" style="color:black;">
+                &copy; 2022 - Pronunce_User_Interface - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            </div>
+        </footer>
+
+    }
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

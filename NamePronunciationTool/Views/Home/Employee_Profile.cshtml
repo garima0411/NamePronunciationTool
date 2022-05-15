@@ -25,7 +25,7 @@
 
 <body>
     <section style="background-color: #eee;">
-        <div class="container py-5">
+        <div class="container-fluid p-2">
             <!-- Start your project here-->
             <div class="row">
                 <div class="col">
@@ -68,14 +68,7 @@
                                 </div>
                             </div>
                             <hr>
-                            <div class="row">
-                                <div class="col-sm-5">
-                                    <p class="mb-0">Legal Name</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">@Context.Session.GetString("emplegalname")</p>
-                                </div>
-                            </div>
+
                             <hr>
                             <div class="row">
                                 <div class="col-sm-5">
@@ -95,7 +88,7 @@
                                 </div>
                             </div>
                             <hr>
-                            
+
                             <div class="row">
                                 <div class="col-sm-5">
                                     <p class="mb-0">Address</p>
@@ -121,148 +114,186 @@
                                 </div>
 
                                 <div id="idRec" class="tabcontent" style="display: block;">
-                                    <h3>Pronunce Name</h3>
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <label class="mb-0 switch">
-                                                <input type="checkbox" onclick="toggleFields()" id="togBtn">
-                                                <div class="slider round">
-                                                    <!--ADDED HTML -->
-                                                    <span class="on">Users' Preference</span>
-                                                    <span class="off">Users' Preference</span>
 
-                                                    <!--END-->
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div class="col-sm-5" id="divlanguage">
-                                            <select class="custom-select text-muted mb-0" id="language">
-                                                <option value="en_US" selected>
-                                                    American English Pronunciation
-                                                </option>
-                                                <option value="en_GB">
-                                                    British English pronunciation
-                                                </option>
-                                                <option value="en_IN">
-                                                    Indian English pronunciation
-                                                </option>
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-3" id="divvoice">
-                                            <select class="custom-select text-muted mb-0" id="voice">
-                                                <option value="VoiceGenderFemale" selected>
-                                                    Female
-                                                </option>
-                                                <option value="VoiceGenderMale">
-                                                    Male
-                                                </option>
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-3" id="slowDiv">
-                                            <label class="mb-0 switch">
-                                                <input type="checkbox" id="btnSlow">
-                                                <div class="slider round">
-                                                    <!--ADDED HTML -->
-                                                    <span class="on">Slow</span>
-                                                    <span class="off">Slow</span>
+                                    <div class="pad sizepronounce r newfontstyle h4 text-dark">
+                                        User's Name Pronunciation..<hr>
+                                        <div class="row">
 
-                                                    <!--END-->
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <span></span>
-                                            <button class="bttn" onclick="getNamePronouciation()">
-                                                <img src="~/img/sound.png"
-                                                     alt="user" width="30" height="30">
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <p>
-                                            <span>Phonetics pronunciation in International Phonetic Alphabet :</span>
-                                            <span class="green-background" id="speechToText">
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            </span>
-                                        </p>
-                                    </div>
+                                            <div class="col-sm-3">
+                                                <label class="mb-0 switch">
+                                                    <input type="checkbox" onclick="toggleFields()" id="togBtn">
+                                                    <div class="slider round">
+                                                        <!--ADDED HTML -->
+                                                        <span class="on">User's Recorded Name</span>
+                                                        <span class="off">User's Record Name</span>
 
-                                    <div class="row">
-                                        <div class="col-sm-9">
-                                            <span>Practice and Check match</span>
-                                            <button class="nwbttn mb-1" onclick="getPracticePronouciation()">
-                                                <img src="~/img/mic.png"
-                                                     alt="user" width="30" height="30">
-                                            </button>
+                                                        <!--END-->
+                                                    </div>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-5" id="divlanguage">
+                                                <select class="custom-select text-muted mb-0" id="language">
+                                                    <option value="en_US" selected>
+                                                        American English Pronunciation
+                                                    </option>
+                                                    <option value="en_GB">
+                                                        British English pronunciation
+                                                    </option>
+                                                    <option value="en_IN">
+                                                        Indian English pronunciation
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3" id="divvoice">
+                                                <select class="custom-select text-muted mb-0" id="voice">
+                                                    <option value="VoiceGenderFemale" selected>
+                                                        Female
+                                                    </option>
+                                                    <option value="VoiceGenderMale">
+                                                        Male
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3" id="slowDiv">
+                                                <label class="mb-0 switch">
+                                                    <input type="checkbox" id="btnSlow">
+                                                    <div class="slider round">
+                                                        <!--ADDED HTML -->
+                                                        <span class="on">Slow</span>
+                                                        <span class="off">Slow</span>
 
+                                                        <!--END-->
+                                                    </div>
+                                                </label>
+                                            </div>
+                                            <div id="divMic" class="col-sm-2">
+                                                <span></span>
+                                                <button class="bttn" onclick="getNamePronouciation()">
+                                                    <img src="~/img/sound.png"
+                                                         alt="user" width="30" height="30">
+                                                </button>
+                                            </div>
+                                            <div id="divPractice" class="col-sm-2" style="display: none;">
+                                                <span></span>
+                                                <button id="idvoicematch" disabled class="bttn" onclick="getNamePronouciation()">
+                                                    <img src="~/img/sound.png"
+                                                         alt="user" width="30" height="30">
+                                                </button>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-7">
-                                            <div class="progress rounded" style="height: 5px;">
-                                                <div id="practice" class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <hr>
+
+                                        <div class="row">
+                                            <div class="col-sm-12 h4" id="usrPrfName">
+                                                User's Preferred Name Pronunciation
+
+                                                <button class="nwbttn mb-1" onclick="getPrffPronouciation()">
+                                                    <img src="~/img/play.png"
+                                                         alt="user" width="50" height="50">
+                                                </button>
+                                                <ul id="idUl" class="ulno-space">
+                                                    <li>Preferred Name: <span id="idprfNm" style="color: #e21919;">@Context.Session.GetString("empprfname")</span></li>
+                                                    <li>Preferred Language: <span id="idprflng" style="color: #e21919;">@Context.Session.GetString("empcountry")</span> </li>
+                                                </ul>
 
                                             </div>
 
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <span id="practiceStatus"></span>
+                                        </div><hr>
+                                        <div class="row">
+                                            <div class="col-sm-12 p-3">
+                                                <div class="phonetcdiv" id="idphntc" style="display: none;">
+                                                    <h1 class="hh1 h4"> Phonetics pronunciation in International Phonetic Alphabet ..... </h1>
+                                                    <span class="green-background" id="speechToText"></span>
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
 
+                                    <div id="idPreacticeVoice" class="pad sizenew r newfontstyle h4 text-dark" style="display:none">
+                                        <div class="row">
+                                            <div class="col-sm-9 h4">
+                                                <span>Practice and Check Match</span>
+                                                <button class="nwbttn mb-1" onclick="getPracticePronouciation()">
+                                                    <img src="~/img/mic.png"
+                                                         alt="user" width="30" height="30">
+                                                </button>
+
+                                            </div><hr>
+                                        </div>
+                                        <div class="row p-5">
+                                            <div class="col-sm-7" style="margin-left: 150px;">
+                                                <div id="idtext" role="progressbar" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100" style="--value: 67; --pcolorValue: #369; --scolorValue: #adf"></div>
+
+                                            </div>
+                                        </div>
 
 
+
+                                    </div>
                                 </div>
                                 <div id="idSign" class="tabcontent">
-                                    <h3>Sign Language</h3>
-                                    <div class="row">
-                                        <div class="col-sm-5">
-                                            <!--<button class="bttn submit" onclick="playPause()">Play/Pause</button>-->
+
+                                    <div class="pad sign r newfontstyle h4 text-dark">
+                                        <div class="row">
                                             <div class="row">
-                                                <span>
-                                                    User's preferred pronunciation:
-                                                    <button class="bttn" onclick="getSignPronouciation()">
-                                                        <img src="~/img/sound.png" alt="user" width="30" height="30">
-                                                    </button>
-                                                </span>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-9 border bg-light rounded-3 p-0 ml-3">
-                                                    <span class="" id="usrspeechToText"></span>
+                                                <div class="col-sm-12">
+                                                    <!--<button class="bttn submit" onclick="playPause()">Play/Pause</button>-->
+                                                    <div class="row">
+                                                        <span>
+                                                            User's Preferred Name in Sign Language.. <span />
+                                                            <button class="bttn" onclick="getSignPronouciation()">
+                                                                <img src="~/img/sound.png" alt="user" width="30" height="30">
+                                                            </button>
+                                                        </span>
+                                                    </div><hr>
+                                                    <div class="row p-3">
+                                                        <div class="col-sm-5 border bg-light rounded-3 p-0 ml-3">
+                                                            <span class="" id="usrspeechToText"></span>
+                                                        </div>
+                                                        <div class="col-sm-2 border bg-light rounded-3 p-0 ml-1">
+                                                            <span class="ml-3" id="KeysinAudio"></span>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <!--<input type="text" name="sen" class=" myborder" id="KeysinAudio" placeholder="">-->
+
                                                 </div>
-                                                <div class="col-sm-2 border bg-light rounded-3 p-0 ml-1">
-                                                    <span class="ml-3" id="KeysinAudio"></span>
+                                            </div>
+                                            <div class="row p-3">
+                                                <div class="col-sm-12">
+                                                    <video id="videoPlayer" width="730" height="400" preload="auto" autoplay>
+                                                        <source src="~/videos/Hello.mp4" type="video/mp4">
+                                                        Your browser does not support HTML5 video.
+                                                    </video>
                                                 </div>
-
                                             </div>
 
-                                            <!--<input type="text" name="sen" class=" myborder" id="KeysinAudio" placeholder="">-->
 
-                                        </div>
-                                        <div class="col-sm-5">
-                                            <video id="videoPlayer" width="350" height="200" preload="auto" autoplay>
-                                                <source src="~/videos/Hello.mp4" type="video/mp4">
-                                                Your browser does not support HTML5 video.
-                                            </video>
                                         </div>
                                     </div>
+
                                 </div>
 
                                 <div id="idTrend" class="tabcontent">
-                                    <h3>Trending on HowToPronounce : <span id="idTrendspan"></span></h3>
-                                    <script src="https://code.highcharts.com/highcharts.js"></script>
-                                    <script src="https://code.highcharts.com/highcharts-more.js"></script>
-                                    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+                                    <div class="pad sizepronounce r newfontstyle h4 text-dark">
+                                        Trending on HowToPronounce : <span id="idTrendspan">@Context.Session.GetString("Employeeusername")</span><hr>
+                                        <script src="https://code.highcharts.com/highcharts.js"></script>
+                                        <script src="https://code.highcharts.com/highcharts-more.js"></script>
+                                        <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
-                                    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                                        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+                                    </div>
 
 
                                 </div>
                                 <div id="idSupport" class="tabcontent">
-                                    <h3>Support</h3>
-                                    <p>For any support please reach out to garima.raha@gmail.com</p>
+                                    <div class="pad sizepronounce r newfontstyle h3 text-dark">
+                                        Support .. <hr>
+                                        <p class="h5">For any support please reach out to ZionTeam@ZionChamp.com</p>
+                                    </div>
                                 </div>
 
                                 <script>function openCity(evt, idName) {
@@ -283,116 +314,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card mb-4 mb-md-0">
-                                <div class="card-body">
-                                    <p class="mb-4"><span class="text-primary font-italic me-1">Technicsl SKills</span></p>
-                                    <p class="mb-1" style="font-size: .77rem;">Web Design</p>
-                                    <div class="progress rounded" style="height: 5px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
-                                    <div class="progress rounded" style="height: 5px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
-                                    <div class="progress rounded" style="height: 5px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
-                                    <div class="progress rounded" style="height: 5px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
-                                    <div class="progress rounded mb-2" style="height: 5px;">
-                                        <div class="progress-bar-striped" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card mb-4 mb-md-0">
-                                <div class="card-body">
-                                    <p class="mb-4"><span class="text-primary font-italic me-1">Organizational Outline</span></p>
-                                    <table class="table">
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <h5 style="color:red">Reporting Manager</h5>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="user-info">
-                                                        <div class="user-info__img">
-                                                            <img src="~/img/alex.png"
-                                                                 alt="user" width="70" height="40">
-                                                        </div>
-                                                        <div class="user-info__basic">
-                                                            <h5 class="mb-0">Suresh</h5>
-                                                            <p class="text-muted mb-0">U55679</p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span class="active-circle bg-success"></span> Active
-                                                </td>
-
-                                            </tr>
-                                        </tbody>
-                                        <tbody>
-
-                                            <tr>
-                                                <td>
-                                                    <h5 style="color:red">Team Outlines</h5>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="user-info">
-                                                        <div class="user-info__img">
-                                                            <img src="~/img/alex.png"
-                                                                 alt="user" width="70" height="40">
-                                                        </div>
-                                                        <div class="user-info__basic">
-                                                            <h5 class="mb-0">Ranjana</h5>
-                                                            <p class="text-muted mb-0">U55679</p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span class="active-circle bg-success"></span> Active
-                                                </td>
-
-                                            </tr>
-
-                                            <tr>
-                                                <td>
-                                                    <div class="user-info">
-                                                        <div class="user-info__img">
-                                                            <img src="~/img/alex_male.png"
-                                                                 alt="user" width="70" height="40">
-                                                        </div>
-                                                        <div class="user-info__basic">
-                                                            <h5 class="mb-0">Edwin</h5>
-                                                            <p class="text-muted mb-0">U45675</p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span class="active-circle bg-danger"></span>Inactive
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
 
 
                 </div>
@@ -400,11 +321,7 @@
         </div>
     </section>
 
-
-    <script>/*$(function () {
-                    $("#practice").addClass("progress-bar-purple");
-                });*/
-        async function getPracticePronouciation() {
+    <script>async function getPracticePronouciation() {
 
 
             const username = document.getElementById("idName").innerHTML;
@@ -416,31 +333,87 @@
             getData(endpoint)
                 .then(data => {
                     console.log(data);
-                    document.getElementById("practice").style.fontSize = "xxx-large";
                     if (parseFloat(data) > 65.0) {
-                        document.getElementById("practice").style.display = "inline-block"
+                        document.getElementById("idtext").style.setProperty('--value', data);
 
-                        document.getElementById("practice").style.width = parseFloat(data) + "%"
-                        document.getElementById("practice").style.ariaValueNow = parseFloat(data)
-                        document.getElementById("practice").style.backgroundColor = "green"
+                        document.getElementById("idtext").style.setProperty('--pcolorValue', '#035417');
+                        document.getElementById("idtext").style.setProperty('--scolorValue', '#6ef08d');
                     }
                     else if (parseFloat(data) > 60.0) {
-                        document.getElementById("practice").style.display = "inline-block"
+                        document.getElementById("idtext").style.setProperty('--value', data);
 
-                        document.getElementById("practice").style.width = parseFloat(data) + "%"
-                        document.getElementById("practice").style.ariaValueNow = parseFloat(data)
-                        document.getElementById("practice").style.backgroundColor = "yellow"
+                        document.getElementById("idtext").style.setProperty('--pcolorValue', '#b0a010');
+                        document.getElementById("idtext").style.setProperty('--scolorValue', '#f5e767');
                     }
                     else {
-                        document.getElementById("practice").style.display = "inline-block"
+                        document.getElementById("idtext").style.setProperty('--value', data);
 
-                        document.getElementById("practice").style.width = parseFloat(data) + "%"
-                        document.getElementById("practice").style.ariaValueNow = parseFloat(data)
-                        document.getElementById("practice").style.backgroundColor = "orange"
+                        document.getElementById("idtext").style.setProperty('--pcolorValue', '#ed4a18');
+                        document.getElementById("idtext").style.setProperty('--scolorValue', '#f0b59e');
                     }
 
-                    document.getElementById("practiceStatus").innerHTML = data + "%"; //KeysinAudio
+                });
 
+
+        }
+
+        async function getPrffPronouciation() {
+
+
+            const username = document.getElementById("idprfNm").innerHTML;
+            const employeeId = document.getElementById("employeeId").textContent;
+            const pronouceChoice = document.getElementById("togBtn").checked;
+            let slctdLang = "";
+
+
+            switch (document.getElementById("idprflng").innerHTML) {
+                case "Preferred pronunciation in Sign Language":
+                    let selectlang = document.getElementById('language');
+                    slctdLang = selectlang.options[selectlang.selectedIndex].value;
+                    break;
+                case "American English Pronunciation":
+                    slctdLang = "en_US";
+                    break;
+                case "British English Pronunciation":
+                    slctdLang = "en_IN";
+                    break;
+                case "Indian English Pronunciation":
+                    slctdLang = "en_GB";
+                    break;
+                default:
+                    slctdLang = "en_US";
+                    // code block
+                    break;
+            }
+            let slctVc = document.getElementById('voice');
+            let selectdVoice = slctVc.options[slctVc.selectedIndex].value;
+            const soundChoice = document.getElementById("btnSlow").checked;
+            let endpoint = "";
+            if (!pronouceChoice) {
+
+                endpoint = new URL("http://127.0.0.1:5000/standard?username=" + username + "&employeeId=" + employeeId
+                    + "&language=" + slctdLang
+                    + "&voice=" + selectdVoice + "&slow=" + soundChoice);
+            }
+            else {
+                endpoint = new URL("http://127.0.0.1:5000/users?employeeId=" + employeeId);
+            }
+            getData(endpoint)
+                .then(data => {
+                    console.log(data);
+                    let myArray = new Array();
+                    if (!pronouceChoice) {
+                        myArray = username.split("");
+                        document.getElementById("speechToText").innerHTML = data;
+                        document.getElementById("idphntc").style.display = "block";
+                        document.getElementById('idPreacticeVoice').style.display = 'none';
+                    }
+                    else {
+                        myArray = data.split("");
+                        document.getElementById('speechToText').innerHTML = data;
+                        document.getElementById("idphntc").style.display = "block";//KeysinAudio
+                        document.getElementById('idPreacticeVoice').style.display = 'block';
+                    }
 
                 });
 
@@ -476,10 +449,14 @@
                     if (!pronouceChoice) {
                         myArray = username.split("");
                         document.getElementById("speechToText").innerHTML = data;
+                        document.getElementById("idphntc").style.display = "block";
+                        document.getElementById('idPreacticeVoice').style.display = 'none';
                     }
                     else {
                         myArray = data.split("");
-                        document.getElementById('speechToText').innerHTML = data; //KeysinAudio
+                        document.getElementById('speechToText').innerHTML = data;
+                        document.getElementById("idphntc").style.display = "block";//KeysinAudio
+                        document.getElementById('idPreacticeVoice').style.display = 'block';
                     }
 
                 });
@@ -516,8 +493,8 @@
 
                         function videoPlay(videoNum) {
                             document.getElementById('KeysinAudio').innerHTML = videos[videoNum].toUpperCase(); //KeysinAudio
-                            document.getElementById("KeysinAudio").style.color = "#09edc7";
-                            document.getElementById("KeysinAudio").style.fontSize = "xx-large";
+                            document.getElementById("KeysinAudio").style.color = "#e21919";
+                            document.getElementById("KeysinAudio").style.fontSize = "xxx-large";
 
                             document.getElementById("videoPlayer").setAttribute("src", videoSource[videoNum]);
                             document.getElementById("videoPlayer").load();
@@ -526,8 +503,8 @@
                         }
                         document.getElementById('videoPlayer').addEventListener('ended', myHandler, false);
                         document.getElementById('KeysinAudio').innerHTML = videos[0].toUpperCase(); //KeysinAudio
-                        document.getElementById("KeysinAudio").style.color = "#09edc7";
-                        document.getElementById("KeysinAudio").style.fontSize = "xx-large";
+                        document.getElementById("KeysinAudio").style.color = "#e21919";
+                        document.getElementById("KeysinAudio").style.fontSize = "xxx-large";
                         //document.getElementById("list").getElementsByTagName("li")[0].style.fontSize = "xx-large";
 
                         videoPlay(0); // play the video
@@ -577,14 +554,36 @@
                 document.getElementById('divlanguage').style.display = 'none';
                 document.getElementById('divvoice').style.display = 'none';
                 document.getElementById('slowDiv').style.display = 'none';
+                document.getElementById('divMic').style.display = 'none';
+                document.getElementById('divPractice').style.display = 'inline-block';
+                document.getElementById('idphntc').style.display = 'none';
+                document.getElementById('usrPrfName').style.display = 'none';
+
+                document.getElementById('idPreacticeVoice').style.display = 'inline-block';
+
+
+                const employeeId = document.getElementById("employeeId").textContent;
+                let endpoint = new URL("http://127.0.0.1:5000/downloadBlob?employeeId=" + employeeId);
+
+                getData(endpoint)
+                    .then(data => {
+                        console.log(data);
+                        document.getElementById('idvoicematch').removeAttribute("disabled");
+                    });
+
             }
             else {
+                document.getElementById('idphntc').style.display = 'none';
+                document.getElementById('usrPrfName').style.display = 'block';
                 document.getElementById('divlanguage').style.display = 'inline-block';
                 document.getElementById('divvoice').style.display = 'inline-block';
                 document.getElementById('slowDiv').style.display = 'inline-block';
+                document.getElementById('divMic').style.display = 'inline-block';
+                document.getElementById('divPractice').style.display = 'none';
 
             }
         }</script>
 
 </body>
 </html>
+

@@ -1,0 +1,108 @@
+﻿@model EmployeeDetails
+    
+<div class="col-sm-11" id="idLoad">
+   
+    <div class="pad sign r newfontstyle h4 text-dark">
+        <div class="row">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!--<button class="bttn submit" onclick="playPause()">Play/Pause</button>-->
+                    <div class="row">
+                        <span>
+                            Preview your name in Sign Language.. <span />
+                            <button class="bttn" onclick="getSignPronouciation()">
+                                <img src="~/img/sound.png" alt="user" width="30" height="30">
+                            </button>
+                        </span>
+                    </div><hr>
+                    <div class="row p-3">
+                        <div class="col-sm-5 border bg-light rounded-3 p-0 ml-3">
+                            <span class="" id="usrspeechToText">@Model.Emp_usr_prf_Nm</span>
+                        </div>
+                        <div class="col-sm-2 border bg-light rounded-3 p-0 ml-1">
+                            <span class="ml-3" id="KeysinAudio"></span>
+                        </div>
+
+                    </div>
+
+                    <!--<input type="text" name="sen" class=" myborder" id="KeysinAudio" placeholder="">-->
+
+                </div>
+            </div>
+            <div class="row p-3">
+                <div class="col-sm-12">
+                    <video id="videoPlayer" width="730" height="400" preload="auto" autoplay>
+                        <source src="~/videos/Hello.mp4" type="video/mp4">
+                        Your browser does not support HTML5 video.
+                    </video>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+</div>
+
+    <script>
+        
+        async function getSignPronouciation() {
+
+
+            let data = document.getElementById('usrspeechToText').innerHTML;
+            var myArray = data.split("");
+            arr = myArray.filter(function (entry) { return entry.trim() != ''; });
+            play(arr);
+            function play(arr) {
+                var videoSource = new Array();
+                var videos = arr;
+                var j;
+                for (j = 0; j < videos.length; j++) {
+                    videoSource[j] = "/videos/" + videos[j].toUpperCase() + ".mp4";
+                }
+
+                var i = 0; // define i
+                var videoCount = videoSource.length;
+
+                function videoPlay(videoNum) {
+                    document.getElementById('KeysinAudio').innerHTML = videos[videoNum].toUpperCase(); 
+                    document.getElementById("KeysinAudio").style.color = "#e21919";
+                    document.getElementById("KeysinAudio").style.fontSize = "xxx-large";
+
+                    document.getElementById("videoPlayer").setAttribute("src", videoSource[videoNum]);
+                    document.getElementById("videoPlayer").load();
+                    document.getElementById("videoPlayer").play();
+
+                }
+                document.getElementById('videoPlayer').addEventListener('ended', myHandler, false);
+                document.getElementById('KeysinAudio').innerHTML = videos[0].toUpperCase(); 
+                document.getElementById("KeysinAudio").style.color = "#e219197";
+                document.getElementById("KeysinAudio").style.fontSize = "xxx-large";
+                //document.getElementById("list").getElementsByTagName("li")[0].style.fontSize = "xx-large";
+
+                videoPlay(0); // play the video
+
+                function myHandler() {
+                    i++;
+                    if (i == videoCount) {
+
+                        document.getElementById("videoPlayer").pause();
+                    }
+                    else {
+
+                        videoPlay(i);
+                    }
+                }
+            }
+
+      
+
+
+        }
+</script>

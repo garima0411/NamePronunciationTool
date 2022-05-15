@@ -76,6 +76,27 @@ namespace NamePronunciationTool
             return result;
         }
 
+        public EmployeeDetails UpdateandGetEmployeeNameDtks(string ueserID,  string userPrfName, string countryCode)
+        {
+            EmployeeDetails result = new EmployeeDetails();
+            var parameters = new DynamicParameters();
+            parameters.Add("@userid", ueserID, DbType.String, ParameterDirection.Input);
+            parameters.Add("@prfname", userPrfName, DbType.String, ParameterDirection.Input);
+            parameters.Add("@country", countryCode, DbType.String, ParameterDirection.Input);
+
+            using (var connection = new SqlConnection(_connStr))
+            {
+
+                connection.Open();
+                result = connection.QueryFirstOrDefault<EmployeeDetails>(QueryHelper.updatePrfName, parameters, commandType: CommandType.Text, commandTimeout: 120);
+
+                connection.Close();
+
+
+            }
+
+            return result;
+        }
 
 
 
@@ -127,9 +148,29 @@ EmpAddress ,
 EmpCity,
 Mobile,
 Employee_legal_Nm,
+Emp_usr_nm_country,
 Emp_usr_prf_Nm,
 Emp_usr_nm_rec_path from Employee emp inner join
 Employee_Name_Pronounce_HLP Hlpname on emp.EmployeeUID = Hlpname.Employee_uid where emp.EmployeeUID= @userid";
+
+        public const string updatePrfName = @"BEGIN
+
+ update Employee_Name_Pronounce_HLP set Emp_usr_nm_country= @country, Emp_usr_prf_Nm = @prfname where Employee_uid =@userid;
+
+select distinct 
+EmployeeName ,
+Email ,
+EmpAddress ,
+EmpCity,
+Mobile,
+Employee_legal_Nm,
+Emp_usr_prf_Nm,
+Emp_usr_nm_country,
+Emp_usr_nm_rec_path from Employee emp inner join
+Employee_Name_Pronounce_HLP Hlpname on emp.EmployeeUID = Hlpname.Employee_uid where emp.EmployeeUID= @userid;
+
+
+END";
 
     }
 }

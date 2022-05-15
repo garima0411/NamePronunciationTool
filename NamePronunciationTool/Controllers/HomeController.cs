@@ -30,11 +30,13 @@ namespace NamePronunciationTool.Controllers
         }
         public IActionResult Employee_Profile()
         {
+            ViewBag.isEmployeeprofile = true;
             return View();
         }
 
         public IActionResult User_Profile()
         {
+            ViewBag.isUserprofile = true;
             return View();
         }
 
@@ -58,7 +60,7 @@ namespace NamePronunciationTool.Controllers
                 ViewBag.isLoggedin = true;
 
                 var userDtls = dal.GetSearchedEmployee(UserName);
-                if(userDtls != null)
+                if (userDtls != null)
                 {
                     var fullname = userDtls.EmployeeName;
                     HttpContext.Session.SetString("fullname", fullname);
@@ -67,17 +69,28 @@ namespace NamePronunciationTool.Controllers
                     HttpContext.Session.SetString("legalname", legalname);
                     var prfname = string.IsNullOrWhiteSpace(userDtls.Emp_usr_prf_Nm) ? legalname : userDtls.Emp_usr_prf_Nm;
                     HttpContext.Session.SetString("prfname", prfname);
+                   
+                   
                     var mobile = userDtls.Mobile;
+                    var countrycode = userDtls.Emp_usr_nm_country;
+                    HttpContext.Session.SetString("country", CountryDetails.GetCountryNameByCode(countrycode));
+                    
                     HttpContext.Session.SetString("mobile", mobile);
-                   var email = userDtls.Email;
+                    var email = userDtls.Email;
                     HttpContext.Session.SetString("email", email);
                     var address = userDtls.EmpAddress + " , " + userDtls.EmpCity;
                     HttpContext.Session.SetString("address", address);
 
+                    if (!string.IsNullOrWhiteSpace(userDtls.Emp_usr_prf_Nm))
+                    {
+                        HttpContext.Session.SetString("usrprfname", prfname);
+                        HttpContext.Session.SetString("usrcountry", CountryDetails.GetCountryNameByCode(countrycode));
+                    }
+
                 }
-               
-                
-                
+
+
+
                 return View("Index");
             }
             else
@@ -88,7 +101,62 @@ namespace NamePronunciationTool.Controllers
             }
         }
 
-       [HttpPost]
+       
+        public IActionResult ClearPreferredName(string prfName = "", string country = "")
+        {
+            DataAccessLayer dal = new DataAccessLayer();
+            var userDtls = dal.UpdateandGetEmployeeNameDtks(HttpContext.Session.GetString("userID"), prfName, country);
+            if (userDtls != null)
+            {
+                HttpContext.Session.Remove("usrprfname");
+                HttpContext.Session.Remove("usrcountry");
+                ViewBag.saveStatus = "Successfully Saved";
+                ViewBag.isUserprofile = true;
+                ViewBag.isEmployeeprofile = true;
+                return View("User_Profile");
+
+            }
+            else
+            {
+                ViewBag.error = "Invalid Account";
+                ViewBag.isLoggedin = false;
+                return View("Index");
+            }
+        }
+
+        [HttpGet]
+        public IActionResult SavePreferredName(string prfName = "", string country = "")
+        {
+            DataAccessLayer dal = new DataAccessLayer();
+            var userDtls = dal.UpdateandGetEmployeeNameDtks(HttpContext.Session.GetString("userID"),prfName, country);
+            if (userDtls != null)
+            {
+                    
+                    var prfname = string.IsNullOrWhiteSpace(userDtls.Emp_usr_prf_Nm) ? userDtls.Employee_legal_Nm : userDtls.Emp_usr_prf_Nm;
+                    HttpContext.Session.SetString("usrprfname", prfname);
+                    
+                if (string.IsNullOrWhiteSpace(userDtls.Emp_usr_nm_country))
+                    HttpContext.Session.SetString("usrcountry", "Preferred pronunciation in Sign Language");
+                else
+                    HttpContext.Session.SetString("usrcountry", CountryDetails.GetCountryNameByCode(userDtls.Emp_usr_nm_country));
+
+
+                ViewBag.saveStatus = "Successfully Saved";
+                    ViewBag.isUserprofile = true;
+                    ViewBag.isEmployeeprofile = true;
+                return PartialView("_ProfilePartial", userDtls);
+
+            }
+            else
+            {
+                ViewBag.error = "Invalid Account";
+                ViewBag.isLoggedin = false;
+                return View("Index");
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult SearchByUid(string userID)
         {
             DataAccessLayer dal = new DataAccessLayer();
@@ -106,11 +174,26 @@ namespace NamePronunciationTool.Controllers
                 HttpContext.Session.SetString("empprfname", prfname);
                 var mobile = userDtls.Mobile;
                 HttpContext.Session.SetString("empmobile", mobile);
+                if(string.IsNullOrEmpty(userDtls.Emp_usr_nm_country))
+                {
+                    HttpContext.Session.SetString("empcountry", "American English Pronunciation");
+                }
+                else if (string.IsNullOrWhiteSpace(userDtls.Emp_usr_nm_country))
+                {
+                    HttpContext.Session.SetString("empcountry", "Preferred pronunciation in Sign Language");
+                }
+                else { 
+
+                    HttpContext.Session.SetString("empcountry", CountryDetails.GetCountryNameByCode(userDtls.Emp_usr_nm_country));
+                    
+                }
+
                 var email = userDtls.Email;
                 HttpContext.Session.SetString("empemail", email);
                 var address = userDtls.EmpAddress + " , " + userDtls.EmpCity;
                 HttpContext.Session.SetString("empaddress", address);
-
+                ViewBag.isUserprofile = true;
+                ViewBag.isEmployeeprofile = true;
                 return View("Employee_Profile");
             }
             else
@@ -129,7 +212,9 @@ namespace NamePronunciationTool.Controllers
 
         public IActionResult Profile()
         {
-            return View();
+
+            ViewBag.isUserprofile = true;
+            return Redirect("/signLangRec/SignLang.html");
         }
         [Route("logout")]
         [HttpGet]
