@@ -111,6 +111,7 @@
                                     <button class="tablinks" onclick="openCity(event, 'idSign')">Record with Sign Language</button>
                                     <button class="tablinks" onclick="openCity(event, 'idTrend')">Trend</button>
                                     <button class="tablinks" onclick="openCity(event, 'idSupport')">Support</button>
+                                    <button class="tablinks" onclick="openCity(event, 'idHelp')">Help</button>
                                 </div>
 
                                 <div id="idRec" class="tabcontent" style="display: block;">
@@ -164,7 +165,7 @@
                                     <div class="row p-3">
                                         <div class="col-sm-6">
                                             <div class="pad r newfontstyle h4 text-dark">
-                                               Voice Record Your Name      <hr>
+                                                Voice Record Your Name      <hr>
                                                 <div class="h6" id="divrec" style="text-align:left;">
                                                     <label>Click the button to start recording...</label>
                                                     <button class="nwbttn" id="btnRecNM" onclick="location.href='@Url.Action("RecordYourName", "Home")'">
@@ -188,7 +189,7 @@
                                             <div class="pad r newfontstyle h4 text-dark">
                                                 Play Back Recording  <hr>
                                                 <div class="h6" id="divplayback" style="text-align:left;">
-                                                    <label>Click the button to play recording...</label> 
+                                                    <label>Click the button to play recording...</label>
                                                     <button class="nwbttn" onclick="getNamePronouciation()">
                                                         <img src="~/img/play.png"
                                                              alt="user" width="80" height="70">
@@ -384,7 +385,24 @@
                                 <div id="idSupport" class="tabcontent">
                                     <div class="pad sizepronounce r newfontstyle h3 text-dark">
                                         Support .. <hr>
-                                        <p class="h5">For any support please reach out to ZionTeam@ZionChamp.com</p>
+                                        <p class="h5">For any support please reach out to ZionTeam@wellsfargo.com</p>
+                                    </div>
+                                </div>
+                                <div id="idHelp" class="tabcontent">
+                                    <div class="pad sizepronounce r newfontstyle h3 text-dark">
+                                        Help .. <hr>
+                                        <p class="h5">To add your name pronounciation on your profile from your Laptop VDI.</p>
+                                        <ul id="idUl" class="ulno-space" style="color: #e21919;">
+                                            <li >Open Name Pronunciation portal.</li>
+                                            <li>Login to your profile in Teamworks.</li>
+                                            <li>Navigate to User Profile to edit your details.</li>
+                                            <li>Navigate your Name pronounce helper to record your preferred name.</li>
+                                            <li>Record your name with Sign Language, Voice Recording and by entering text.</li>
+                                            <li>Search with AD/ENT User ID for an employee.</li>
+                                            <li>Employee Profile page can show you Name Pronounce Helper to listen employee's preferred name.</li>
+                                            <li>Admin can login to the portal with OKTA authentication to manage user's pronunciation.</li>
+
+                                        </ul>
                                     </div>
                                 </div>
 
