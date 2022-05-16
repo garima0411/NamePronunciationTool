@@ -1,631 +1,117 @@
 ﻿@{
-    ViewData["Title"] = "User Profile page";
-
+    ViewData["Title"] = "Employee Profile";
 }
+@using Microsoft.AspNetCore.Http;
+
 
 <html>
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Material Design for Bootstrap</title>
-    <!-- MDB icon -->
-    <link rel="icon" href="~/img/mdb-favicon.ico" type="image/x-icon" />
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
-    <!-- Google Fonts Roboto -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
-    <!-- MDB -->
-    <link rel="stylesheet" href="~/css/bootstrap-profiles.min.css" />
-    <link rel="stylesheet" href="~/css/styles.css">
-    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-    <script type="text/javascript" src="js/site.js"></script>
+    <link rel="shortcut icon" type="image/png" href="Images/asl_logo.ico" />
+    <title>Sign Language</title>
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans:100,300,400,500" rel="stylesheet">
+    <link rel="stylesheet" href="/signLangRec/CSS/style.css">
+    <link rel="stylesheet" href="/signLangRec/CSS/animate.css">
+    <script src="/signLangRec/dist/build.js"></script>
+
 </head>
 
+<!--
 <body>
-    <!-- Start your project here-->
     <section style="background-color: #eee;">
-        <div class="container py-5">
+        <div class="container-fluid p-2">
+           <div class="row">
+
+           </div>
+        </div>
+    </section>
+
+
+
+</body>
+
+
+-->
+<body>
+    <section style="background-color: #eee;">
+        <div class="container-fluid p-2">
             <div class="row">
-                <div class="col">
-                    <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
-                        <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item"><a href="/">Home</a></li>
-                            <li class="breadcrumb-item"><a href="/Employee_Profile.cshtml">Employee Profile</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">User Profile</li>
-                        </ol>
-                    </nav>
+
+                
+    <div id="welcomeContainer" class="animated">
+        <div id="welcomeScreen">
+            <h1>Welcome to Sign Language Translator</h1>
+        </div>
+        <button id="proceedButton">Proceed</button>
+    </div>
+                <!--Title bar explains the stage of the program
+    (eg: instructions for Training, Prediction, and Video Chat)-->
+                <div id="titleBar">
+                    <h1 id="stage">Train Gestures</h1>
+                    <h3 id="steps">Train about 30 samples of your Start Gesture and 30 for your idle, Stop Gesture.</h3>
+                    <button id="nextButton" class="animated flash delay-3s">Next</button>
+                    <button id="predictButton" class="animated flash slideInRight faster">Translate</button>
+                    <button id="backButton" class="animated slideInLeft faster">Back to Training</button>
+                    <button id="videoCallBtn" class="videoCallBtn animated slideInRight faster">Video Call</button>
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="card mb-4">
-                        <div class="card-body text-center">
-                            <img src="~/img/alex_male.png" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
-                            <h5 class="my-3">
-                                <span id="idName">Michaels Dawn Thomas</span>
-                                <span> - </span>
-                                <span id="employeeId">1779922</span>
-                            </h5>
-                            <p class="text-muted mb-1">Full Stack Developer</p>
-
-                        </div>
-
-                    </div>
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Full Name</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">Michaels Thomas</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Legal Name</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">Michaels Dawn Thomas</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Email</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">April.Thomas@example.com</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Phone</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">(097) 000-5678</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Mobile</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">(098) 000-4321</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Address</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">Wells Fargo, Bangalore</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                <!--Status bar shows the status of translation-->
+                <div id="status">
+                    <p id="status-text">Status: Not Ready</p>
                 </div>
-                <div class="col-lg-8">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h5>Name Pronunce Helper</h5>
-                            <div class="row">
-                                <div class="tab">
-                                    <button class="tablinks" onclick="openCity(event, 'idRec')">Recording</button>
-                                    <button class="tablinks" onclick="openCity(event, 'idSign')">Sign Language</button>
-                                    <button class="tablinks" onclick="openCity(event, 'idTrend')">Trend</button>
-                                    <button class="tablinks" onclick="openCity(event, 'idSupport')">Support</button>
-                                </div>
 
-                                <div id="idRec" class="tabcontent">
-                                    <h3>Recording</h3>
-                                    <div class="row">
+                <!--The Translator Window displays the video of the user, various buttons, and holds
+    the training and translation screens-->
+                <div id="translatorWindow">
 
-                                        <div class="col-sm-5" id="divlanguage">
-                                            <label>Record Your Name</label>
-                                            <button class="nwbttn" onclick="recordNamePronouciation()">
-                                                <img src="~/img/record.png"
-                                                     alt="user" width="70" height="50">
-                                            </button>
-                                        </div>
-                                        <div class="col-sm-5" id="divvoice">
-                                            <label>Preview</label>
+                    <!--Initial Training Holder creates the screen where users train Start and Stop Gestures-->
+                    <div id="initialTrainingHolder">
+                        <img src="" alt="checkmark" id="checkmark_startButton" class="checkMark">
+                        <button id="startButton" class="trainButton ">Start Gesture</button>
+                        <button id="clear_startButton" class="clearButton">Clear</button>
+                        <h3 id="counter_startButton" class="counter"></h3>
 
-                                            <button class="nwbttn" onclick="getNamePronouciation()">
-                                                <img src="~/img/play.png"
-                                                     alt="user" width="40" height="30">
-                                            </button>
-                                        </div>
-                                        <p>
-                                            <span>Phonetics pronunciation in International Phonetic Alphabet :</span>
-                                            <span class="green-background" id="speechToText"></span>
-                                        </p>
-
-
-                                    </div>
-                                </div>
-
-                                <div id="idSign" class="tabcontent">
-                                    <h3>Sign Language</h3>
-
-                                    <div class="keyboard">
-                                        Sign Language Keyboard
-                                        <div class="section-a">
-
-                                            <div class="key letter" id="idA">
-                                                <img src="~/img/A.png"
-                                                     width="40" height="40">
-                                            </div>
-
-                                            <div class="key letter" id="idB">
-                                                <img src="~/img/B.png"
-                                                     width="40" height="40">
-                                            </div>
-                                            <div class="key letter" id="idC">
-                                                <img src="~/img/C.png"
-                                                     width="40" height="40">
-                                            </div>
-                                            <div class="key letter" id="idD">
-                                                <img src="~/img/D.png"
-                                                     width="40" height="40">
-                                            </div>
-                                            <div class="key letter" id="idE">
-                                                <img src="~/img/E.png"
-                                                     width="40" height="40">
-                                            </div>
-                                            <div class="key letter" id="idF">
-                                                <img src="~/img/F.png"
-                                                     width="40" height="40">
-                                            </div>
-                                            <div class="key letter" id="idG">
-                                                <img src="~/img/G.png"
-                                                     width="55" height="40">
-                                            </div>
-                                            <div class="key letter" id="idH">
-                                                <img src="~/img/H.png"
-                                                     width="55" height="40">
-                                            </div>
-                                            <div class="key letter" id="idI">
-                                                <img src="~/img/I.png"
-                                                     width="40" height="40">
-                                            </div>
-                                            <div class="key letter" id="idJ">
-                                                <img src="~/img/J.png"
-                                                     width="40" height="40">
-                                            </div>
-
-
-
-                                            <div class="key letter" id="idK">
-                                                <img src="~/img/K.png"
-                                                     width="40" height="40">
-                                            </div>
-                                            <div class="key letter" id="idL">
-                                                <img src="~/img/L.png"
-                                                     width="40" height="40">
-                                            </div>
-                                            <div class="key letter" id="idM">
-                                                <img src="~/img/M.png"
-                                                     width="40" height="40">
-                                            </div>
-                                            <div class="key letter" id="idN">
-                                                <img src="~/img/N.png"
-                                                     width="40" height="40">
-                                            </div>
-                                            <div class="key letter" id="idO">
-                                                <img src="~/img/O.png"
-                                                     width="40" height="40">
-                                            </div>
-                                            <div class="key letter" id="idP">
-                                                <img src="~/img/P.png"
-                                                     width="40" height="40">
-                                            </div>
-                                            <div class="key letter" id="idQ">
-                                                <img src="~/img/Q.png"
-                                                     width="40" height="40">
-                                            </div>
-                                            <div class="key letter" id="idR">
-                                                <img src="~/img/R.png"
-                                                     width="40" height="40">
-                                            </div>
-                                            <div class="key letter" id="idS">
-                                                <img src="~/img/S.png"
-                                                     width="40" height="40">
-                                            </div>
-
-
-                                            <div class="key letter" id="idT">
-                                                <img src="~/img/T.png"
-                                                     width="40" height="40">
-                                            </div>
-                                            <div class="key letter" id="idU">
-                                                <img src="~/img/U.png"
-                                                     width="40" height="40">
-                                            </div>
-                                            <div class="key letter" id="idV">
-                                                <img src="~/img/V.png"
-                                                     width="40" height="40">
-                                            </div>
-                                            <div class="key letter" id="idW">
-                                                <img src="~/img/W.png"
-                                                     width="40" height="40">
-                                            </div>
-                                            <div class="key letter" id="idX">
-                                                <img src="~/img/X.png"
-                                                     width="40" height="40">
-                                            </div>
-                                            <div class="key letter" id="idY">
-                                                <img src="~/img/Y.png"
-                                                     width="40" height="40">
-                                            </div>
-                                            <div class="key letter" id="idZ">
-                                                <img src="~/img/Z.png"
-                                                     width="40" height="40">
-                                            </div>
-                                            <div class="keyenter enter" id="idBackspace">
-                                                BACKSPACE
-                                            </div>
-                                            <div class="keyenter enter" id="idClear">
-                                                CLEAR
-                                            </div>
-                                            <div class="keyspacebar space" id="idSpace">
-                                                SPACE
-                                            </div>
-
-
-                                        </div><!-- end arrows -->
-                                    </div><!-- end sec-func -->
-                                    </br>
-                                    <p>
-                                        <span>Preferred Name converted to text :</span>
-                                        <span class="span-background" id="idSigntxt"></span>
-                                    </p>
-
-
-                                </div>
-                                <div id="idTrend" class="tabcontent">
-                                    <h3>Trending on HowToPronounce : <span id="idTrendspan"></span></h3>
-                                    <script src="https://code.highcharts.com/highcharts.js"></script>
-                                    <script src="https://code.highcharts.com/highcharts-more.js"></script>
-                                    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-
-                                    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-
-
-                                </div>
-                                <div id="idSupport" class="tabcontent">
-                                    <h3>Support</h3>
-                                    <p>Support Team</p>
-                                </div>
-
-                                <script>function openCity(evt, cityName) {
-                                        var i, tabcontent, tablinks;
-                                        tabcontent = document.getElementsByClassName("tabcontent");
-                                        for (i = 0; i < tabcontent.length; i++) {
-                                            tabcontent[i].style.display = "none";
-                                        }
-                                        tablinks = document.getElementsByClassName("tablinks");
-                                        for (i = 0; i < tablinks.length; i++) {
-                                            tablinks[i].className = tablinks[i].className.replace(" active", "");
-                                        }
-                                        document.getElementById(cityName).style.display = "block";
-                                        evt.currentTarget.className += " active";
-                                    }</script>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card mb-4 mb-md-0">
-                                <div class="card-body">
-                                    <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project Status</p>
-                                    <p class="mb-1" style="font-size: .77rem;">Web Design</p>
-                                    <div class="progress rounded" style="height: 5px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
-                                    <div class="progress rounded" style="height: 5px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
-                                    <div class="progress rounded" style="height: 5px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
-                                    <div class="progress rounded" style="height: 5px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
-                                    <div class="progress rounded mb-2" style="height: 5px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card mb-4 mb-md-0">
-                                <div class="card-body">
-                                    <p class="mb-4"><span class="text-primary font-italic me-1">Organizational Outline</span></p>
-                                    <table class="table">
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <h5 style="color:red">Reporting Manager</h5>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="user-info">
-                                                        <div class="user-info__img">
-                                                            <img src="~/img/alex.png"
-                                                                 alt="user" width="70" height="40">
-                                                        </div>
-                                                        <div class="user-info__basic">
-                                                            <h5 class="mb-0">Suresh</h5>
-                                                            <p class="text-muted mb-0">U55679</p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span class="active-circle bg-success"></span> Active
-                                                </td>
-
-                                            </tr>
-                                        </tbody>
-                                        <tbody>
-
-                                            <tr>
-                                                <td>
-                                                    <h5 style="color:red">Team Outlines</h5>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="user-info">
-                                                        <div class="user-info__img">
-                                                            <img src="~/img/alex.png"
-                                                                 alt="user" width="70" height="40">
-                                                        </div>
-                                                        <div class="user-info__basic">
-                                                            <h5 class="mb-0">Ranjana</h5>
-                                                            <p class="text-muted mb-0">U55679</p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span class="active-circle bg-success"></span> Active
-                                                </td>
-
-                                            </tr>
-
-                                            <tr>
-                                                <td>
-                                                    <div class="user-info">
-                                                        <div class="user-info__img">
-                                                            <img src="~/img/alex_male.png"
-                                                                 alt="user" width="70" height="40">
-                                                        </div>
-                                                        <div class="user-info__basic">
-                                                            <h5 class="mb-0">Edwin</h5>
-                                                            <p class="text-muted mb-0">U45675</p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span class="active-circle bg-danger"></span>Inactive
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
+                        <button id="stopButton" class="trainButton ">Stop Gesture</button>
+                        <button id="clear_stopButton" class="clearButton">Clear</button>
+                        <h3 id="counter_stopButton" class="counter"></h3>
+                        <img src="" alt="checkmark" id="checkmark_stopButton" class="checkMark">
                     </div>
 
+                    <!--Video Holder displays the video feed from the user for training and translation.
+        It also displays the Video Call feed once the user decides to do that-->
+                    <div id="videoHolder" class="videoContainerTrain">
+                        <video id="video" class="videoTrain" src='' muted autoplay playsinline></video>
+                        <iframe src="https://tokbox.com/embed/embed/ot-embed.js?embedId=f37957b6-0f91-4fc5-90ce-f818cc85b5bf&room=DEFAULT_ROOM&iframe=true"
+                                width=650 height=370 allow="microphone; camera" id="videoCall"></iframe>
+                    </div>
 
+                    <!--Training Holder displays the screen where users add and train new gestures-->
+                    <div id="trainingHolder">
+                        <h5 id="add-gesture">Add Gesture</h5>
+                        <img src="signLangRec/Images/plus_sign.svg" alt="Plus Sign" id="plus_sign" class="plus_sign animated">
+                        <form id="add-word" autocomplete="off">
+                            <input type="text" id="new-word" placeholder="New Gesture Title">
+                            <input type="submit" id="submit-word" value="Add Word &#9658;">
+                        </form>
+                        <button id="doneRetrain" class="doneRetrain">Done Retraining</button>
+
+                        <div id="trainingCommands"></div>
+                    </div>
+
+                    <!--Translation Holder is where the Gesture Card and Text that was translated is displayed.-->
+                    <div id="translationHolder">
+                        <div id="translatedCard">
+                        </div>
+                        <h3 id="translationText">Start Signing!</h3>
+                    </div>
+                </div>
+
+                <!--Trained Card Holder contains all the trained gestures' cards.
+    It is outside the Training and Translation Windows because it has to be displayed on both screens-->
+                <div id="trainedCardsHolder">
                 </div>
             </div>
         </div>
     </section>
-    <!-- End your project here-->
-    <!-- MDB -->
-    <script type="text/javascript" src="js/mdb.min.js"></script>
-    <!-- Custom scripts -->
-    <script type="text/javascript"></script>
-
-    <script>async function recordNamePronouciation() {
-            const employeeId = document.getElementById("employeeId").textContent;
-
-
-            const endpoint = new URL("http://127.0.0.1:5000/recording?employeeId=" + employeeId);
-            var headers = {};
-            const response = await fetch(endpoint,
-                {
-                    method: "GET",
-                    mode: 'no-cors',
-                    headers: headers
-
-                });
-
-        }
-        async function getNamePronouciation() {
-
-
-            const username = document.getElementById("idName").innerHTML;
-            const employeeId = document.getElementById("employeeId").textContent;
-            let endpoint = "";
-
-            endpoint = new URL("http://127.0.0.1:5000/users?employeeId=" + employeeId);
-            getData(endpoint)
-                .then(data => {
-                    console.log(data);
-                    document.getElementById('speechToText').innerHTML = data; //KeysinAudio
-
-                });
-
-
-        }
-        document.getElementById("idTrendspan").innerHTML = document.getElementById("idName").innerHTML;
-        document.getElementById("idA").addEventListener("click", writeNameIntoTex.bind(event, "A"), false);
-        document.getElementById("idB").addEventListener("click", writeNameIntoTex.bind(event, "B"), false);
-        document.getElementById("idC").addEventListener("click", writeNameIntoTex.bind(event, "C"), false);
-        document.getElementById("idD").addEventListener("click", writeNameIntoTex.bind(event, "D"), false);
-        document.getElementById("idE").addEventListener("click", writeNameIntoTex.bind(event, "E"), false);
-        document.getElementById("idF").addEventListener("click", writeNameIntoTex.bind(event, "F"), false);
-        document.getElementById("idG").addEventListener("click", writeNameIntoTex.bind(event, "G"), false);
-        document.getElementById("idH").addEventListener("click", writeNameIntoTex.bind(event, "H"), false);
-        document.getElementById("idI").addEventListener("click", writeNameIntoTex.bind(event, "I"), false);
-        document.getElementById("idJ").addEventListener("click", writeNameIntoTex.bind(event, "J"), false);
-        document.getElementById("idK").addEventListener("click", writeNameIntoTex.bind(event, "K"), false);
-        document.getElementById("idL").addEventListener("click", writeNameIntoTex.bind(event, "L"), false);
-        document.getElementById("idM").addEventListener("click", writeNameIntoTex.bind(event, "M"), false);
-        document.getElementById("idN").addEventListener("click", writeNameIntoTex.bind(event, "N"), false);
-        document.getElementById("idO").addEventListener("click", writeNameIntoTex.bind(event, "O"), false);
-        document.getElementById("idP").addEventListener("click", writeNameIntoTex.bind(event, "P"), false);
-        document.getElementById("idQ").addEventListener("click", writeNameIntoTex.bind(event, "Q"), false);
-        document.getElementById("idR").addEventListener("click", writeNameIntoTex.bind(event, "R"), false);
-        document.getElementById("idS").addEventListener("click", writeNameIntoTex.bind(event, "S"), false);
-        document.getElementById("idT").addEventListener("click", writeNameIntoTex.bind(event, "T"), false);
-        document.getElementById("idU").addEventListener("click", writeNameIntoTex.bind(event, "U"), false);
-        document.getElementById("idV").addEventListener("click", writeNameIntoTex.bind(event, "V"), false);
-        document.getElementById("idW").addEventListener("click", writeNameIntoTex.bind(event, "W"), false);
-        document.getElementById("idX").addEventListener("click", writeNameIntoTex.bind(event, "X"), false);
-        document.getElementById("idY").addEventListener("click", writeNameIntoTex.bind(event, "Y"), false);
-        document.getElementById("idZ").addEventListener("click", writeNameIntoTex.bind(event, "Z"), false);
-        document.getElementById("idSpace").addEventListener("click", writeNameIntoTex.bind(event, " "), false);
-
-        document.getElementById("idBackspace").addEventListener("click", deleteNameIntoTex);
-        document.getElementById("idClear").addEventListener("click", clearNameIntoTex);
-
-
-        function writeNameIntoTex(str = '') {
-            let val = document.getElementById("idSigntxt").innerHTML;
-            document.getElementById("idSigntxt").innerHTML = val + str;
-        }
-        function deleteNameIntoTex() {
-            let letters = document.getElementById("idSigntxt").innerHTML;
-            let strLetters = letters.split("");
-            strLetters.pop();
-            let text = strLetters.join("");
-            document.getElementById("idSigntxt").innerHTML = text;
-        }
-        function clearNameIntoTex() {
-
-            document.getElementById("idSigntxt").innerHTML = '';
-        }
-
-
-        async function getSignPronouciation() {
-
-
-            const username = document.getElementById("idName").innerHTML;
-            const employeeId = document.getElementById("employeeId").textContent;
-            let endpoint = new URL("http://127.0.0.1:5000/usersSignLang?employeeId=" + employeeId);
-
-            getData(endpoint)
-                .then(data => {
-                    console.log(data);
-                    let myArray = new Array();
-                    myArray = data.split("");
-                    document.getElementById("usrspeechToText").style.fontSize = "large";
-                    document.getElementById('usrspeechToText').innerHTML = data.toUpperCase(); //KeysinAudio
-
-                    arr = myArray.filter(function (entry) { return entry.trim() != ''; });
-                    play(arr);
-                    function play(arr) {
-                        var videoSource = new Array();
-                        var videos = arr;
-                        var j;
-                        for (j = 0; j < videos.length; j++) {
-                            videoSource[j] = "~/videos/" + videos[j].toUpperCase() + ".mp4";
-                        }
-
-                        var i = 0; // define i
-                        var videoCount = videoSource.length;
-
-                        function videoPlay(videoNum) {
-                            document.getElementById('KeysinAudio').innerHTML = videos[videoNum].toUpperCase(); //KeysinAudio
-                            document.getElementById("KeysinAudio").style.color = "#09edc7";
-                            document.getElementById("KeysinAudio").style.fontSize = "xx-large";
-
-                            document.getElementById("videoPlayer").setAttribute("src", videoSource[videoNum]);
-                            document.getElementById("videoPlayer").load();
-                            document.getElementById("videoPlayer").play();
-
-                        }
-                        document.getElementById('videoPlayer').addEventListener('ended', myHandler, false);
-                        document.getElementById('KeysinAudio').innerHTML = videos[0].toUpperCase(); //KeysinAudio
-                        document.getElementById("KeysinAudio").style.color = "#09edc7";
-                        document.getElementById("KeysinAudio").style.fontSize = "xx-large";
-                        //document.getElementById("list").getElementsByTagName("li")[0].style.fontSize = "xx-large";
-
-                        videoPlay(0); // play the video
-
-                        function myHandler() {
-                            i++;
-                            if (i == videoCount) {
-
-                                document.getElementById("videoPlayer").pause();
-                            }
-                            else {
-
-                                videoPlay(i);
-                            }
-                        }
-                    }
-
-                });
-
-
-        }
-        async function getData(url = '') {
-            var data = ''
-            // Default options are marked with *
-            const response = await fetch(url, {
-                method: 'GET',
-                mode: 'cors',
-                cache: 'no-cache',
-                credentials: 'same-origin',
-                headers: {
-                    'Content-Type': 'text/plain'
-                    // 'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                redirect: 'follow'
-            }).then(response => {
-                return response.text()
-            }).then(text => {
-                console.log(text)
-                data = text
-            });
-            return data;
-        }
-
-        function toggleFields() {
-            var checkbox = document.getElementById('togBtn');
-            if (checkbox.checked === true) {
-                document.getElementById('divlanguage').style.display = 'none';
-                document.getElementById('divvoice').style.display = 'none';
-                document.getElementById('slowDiv').style.display = 'none';
-            }
-            else {
-                document.getElementById('divlanguage').style.display = 'inline-block';
-                document.getElementById('divvoice').style.display = 'inline-block';
-                document.getElementById('slowDiv').style.display = 'inline-block';
-
-            }
-        }</script>
-
 </body>
 </html>
