@@ -1,0 +1,15 @@
+
+.DS_Store
+.vs/NamePronunciationTool/xs/project-cache/NamePronunciationTool-Debug.json
+NamePronunciationTool/bin/Debug/netcoreapp3.1/appsettings.json
+NamePronunciationTool/bin/Debug/netcoreapp3.1/Azure.Core.dll
+NamePronunciationTool/bin
+NamePronunciationTool/.vs
+NamePronunciationTool/bin/Debug
+NamePronunciationTool/obj
+NamePronunciationTool/bin/Debug/netcoreapp3.1/NamePronunciationTool.Views.pdb
+NamePronunciationTool/obj/
+
+NamePronunciationTool/obj/project.nuget.cache
+NamePronunciationTool/obj/project.assets.json
+.vs/NamePronunciationTool/xs/UserPrefs.xml
